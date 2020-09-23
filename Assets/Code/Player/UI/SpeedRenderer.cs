@@ -30,6 +30,8 @@ public class SpeedRenderer : MonoBehaviour
     void Update()
     {
         inputAcceleration = PlayerController.Singleton.acceleration;
+        if(!PlayerController.Singleton.IsHighGear)
+            inputAcceleration *= 2;
 
         int currentSteps = Mathf.FloorToInt(inputAcceleration / (1f / numOfSteps));
 
