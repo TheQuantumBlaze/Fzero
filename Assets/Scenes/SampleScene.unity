@@ -1129,7 +1129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1078209647}
   - component: {fileID: 1078209649}
-  - component: {fileID: 1078209648}
   m_Layer: 0
   m_Name: Pixelated Camera
   m_TagString: Untagged
@@ -1151,14 +1150,6 @@ Transform:
   m_Father: {fileID: 928125260}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 180}
---- !u!81 &1078209648
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078209646}
-  m_Enabled: 1
 --- !u!20 &1078209649
 Camera:
   m_ObjectHideFlags: 0
