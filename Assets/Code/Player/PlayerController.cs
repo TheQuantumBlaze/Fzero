@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     // Rigidbody for unity movement and collisions
     public Rigidbody body;
     // Base charcter movement speed
-    public float movementSpeed = 50;
+    public float movementSpeed = 75;
     // Acceeration multiplyer, this defines how much of our speed we are currently traveling
     // Between 0 - 1
     public float acceleration = 0;
@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 2;
 
     //implementing shit
-    public AnimationCurve lowGearAccelerationCurve = new AnimationCurve(new Keyframe(0, 0.2f, 0, 1.16f, 0, 0.4f), new Keyframe(0.06f, 1, 0, 0), new Keyframe(0.6f, 0, 0, 0));
-    public AnimationCurve highGearAccelerationCurve = new AnimationCurve(new Keyframe(0, 0.045f, 0, 0), new Keyframe(0.45f, 0.1f, 0.13f, 0.14f), new Keyframe(0.75f, 0.2f, 0, 0), new Keyframe(1, 0, 0, 0));
+    public AnimationCurve lowGearAccelerationCurve = new AnimationCurve(new Keyframe(0, 0.2f, 0, 1.16f, 0, 0.4f), new Keyframe(0.05f, 0.3f, 0, 0, 0.41f, 0.285f), new Keyframe(1, 0, -0.063f, 0, 0.83f, 0));
+    public AnimationCurve highGearAccelerationCurve = new AnimationCurve(new Keyframe(0, 0.045f, 0, 0.004f, 0, 0.31f), new Keyframe(0.4f, 0.1f, 0.23f, 0.23f, 0.3f, 0.47f), new Keyframe(0.64f, 0.18f, -0.002f, -0.002f, 0.6f, 0.35f), new Keyframe(1, 0.05f, -7.343f, 0, 0.023f, 0));
 
     public bool IsHighGear = false;
     public bool IsAlive = true;
