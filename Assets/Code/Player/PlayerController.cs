@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     // How fast we Accelerate and Deccelerate
     public float accelerationDecomposition = 0.5f;
     public float accelerationAmmount = 0.5f;
+    public float bleedPercentage = 0.1f;
     // Base rotationSpeed
     public float rotationSpeed = 2;
 
@@ -69,10 +70,11 @@ public class PlayerController : MonoBehaviour
         // if our acceleration is greater than zero then we want to start decelerating
         if (Input.GetKey(KeyCode.Space) && IsAlive)
         {
-            acceleration += (accelerationAmmount * Time.deltaTime) * ((IsHighGear == true) ? highGearAccelerationCurve.Evaluate(acceleration) : lowGearAccelerationCurve.Evaluate(acceleration));
+            acceleration += ((accelerationAmmount)* Time.deltaTime) * ((IsHighGear == true) ? highGearAccelerationCurve.Evaluate(acceleration) : lowGearAccelerationCurve.Evaluate(acceleration)) + accelerationDecomposition * Time.deltaTime;
             if (acceleration > 1f) acceleration = 1f;
         }
-        else if (acceleration > 0)
+
+        if (acceleration > 0)
         {
             acceleration -= accelerationDecomposition * Time.deltaTime;
         }
@@ -89,12 +91,14 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow) && IsAlive)
             {
                 body.MoveRotation(Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + (-rotationSpeed), transform.rotation.eulerAngles.z), movementSpeed * Time.deltaTime));
+                acceleration -= (acceleration * bleedPercentage) * Time.deltaTime;
             }
 
             //if the right key is pressed and we are still moving, apply rotation to the player
             else if (Input.GetKey(KeyCode.RightArrow) && IsAlive)
             {
                 body.MoveRotation(Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + (rotationSpeed), transform.rotation.eulerAngles.z), movementSpeed * Time.deltaTime));
+                acceleration -= (acceleration * bleedPercentage) * Time.deltaTime;
             }
 
             //  Move the player based on our acceleration and direction

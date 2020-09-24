@@ -35,6 +35,8 @@ public class SpeedRenderer : MonoBehaviour
 
         int currentSteps = Mathf.FloorToInt(inputAcceleration / (1f / numOfSteps));
 
+        if (currentSteps > numOfSteps) currentSteps = numOfSteps;
+
         float coverage = (!IsOdd) ? coverageMappingEven[currentSteps] / 99f : coverageMappingOdd[currentSteps]/99f;
 
         currentImage.fillAmount = coverage;
