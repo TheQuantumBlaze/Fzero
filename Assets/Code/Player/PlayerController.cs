@@ -69,10 +69,11 @@ public class PlayerController : MonoBehaviour
         // if our acceleration is greater than zero then we want to start decelerating
         if (Input.GetKey(KeyCode.Space) && IsAlive)
         {
-            acceleration += (accelerationAmmount * Time.deltaTime) * ((IsHighGear == true) ? highGearAccelerationCurve.Evaluate(acceleration) : lowGearAccelerationCurve.Evaluate(acceleration));
+            acceleration += ((accelerationAmmount)* Time.deltaTime) * ((IsHighGear == true) ? highGearAccelerationCurve.Evaluate(acceleration) : lowGearAccelerationCurve.Evaluate(acceleration)) + accelerationDecomposition * Time.deltaTime;
             if (acceleration > 1f) acceleration = 1f;
         }
-        else if (acceleration > 0)
+
+        if (acceleration > 0)
         {
             acceleration -= accelerationDecomposition * Time.deltaTime;
         }

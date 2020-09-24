@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 0}
-  movementSpeed: 400
+  movementSpeed: 150
   acceleration: 0
   accelerationDecomposition: 0.5
   accelerationAmmount: 0.5
@@ -230,7 +230,7 @@ MonoBehaviour:
       time: 0
       value: 0.2
       inSlope: 0
-      outSlope: 1.16
+      outSlope: 0
       tangentMode: 0
       weightedMode: 3
       inWeight: 0
@@ -246,9 +246,9 @@ MonoBehaviour:
       outWeight: 0.285
     - serializedVersion: 3
       time: 1
-      value: 0
+      value: -0.1002149
       inSlope: -0.063
-      outSlope: 0
+      outSlope: -0.063
       tangentMode: 0
       weightedMode: 3
       inWeight: 0.83
@@ -615,7 +615,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -623,14 +622,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
