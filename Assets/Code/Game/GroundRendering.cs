@@ -86,6 +86,18 @@ public class GroundRendering : MonoBehaviour
                         new Vector2(0f,0f)
                     });
                 }
+                else if(imageColor == Color.red)
+                {
+                    GameManager.singleton.spawnPoint = new Vector3(x * scale, 0, y * scale);
+
+                    uvs.AddRange(new Vector2[]
+                    {
+                        new Vector2(0.5f,1f),
+                        new Vector2(1f,1f),
+                        new Vector2(1f,0f),
+                        new Vector2(0.5f,0f)
+                    });
+                }
             }
         }
 
@@ -110,5 +122,7 @@ public class GroundRendering : MonoBehaviour
         mesh.mesh.RecalculateTangents();
 
         collider.sharedMesh = mesh.mesh;
+
+        GameManager.singleton.spawnPlayer();
     }
 }
