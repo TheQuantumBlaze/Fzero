@@ -1031,7 +1031,7 @@ MonoBehaviour:
   mesh: {fileID: 0}
   render: {fileID: 0}
   collider: {fileID: 0}
-  scale: 1
+  scale: 2
 --- !u!33 &1068917774
 MeshFilter:
   m_ObjectHideFlags: 0
