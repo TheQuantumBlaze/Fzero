@@ -7,8 +7,11 @@ public class PlayerSounds : MonoBehaviour
     public AudioClip motorEngineSound;
     public AudioClip motorExteriorSound;
     public AudioClip explosionSound;
+    public AudioClip background;
+
     AudioSource audioSourceEngine;
     AudioSource audioSourceExt;
+    AudioSource backgroundAudio;
 
     PlayerController player;
 
@@ -19,10 +22,14 @@ public class PlayerSounds : MonoBehaviour
 
         AudioSource[] srcs = GetComponents<AudioSource>();
         audioSourceEngine = srcs[0];
-        if(srcs.Length > 1 && motorExteriorSound)
-            audioSourceExt = srcs[1];
+        audioSourceExt = srcs[1];
+        backgroundAudio = srcs[2];
         
         SetupAudioSourcesForDrive();
+        backgroundAudio.clip = background;
+        backgroundAudio.loop = true;
+        backgroundAudio.volume = 0.027f;
+        backgroundAudio.Play();
     }
 
     // Update is called once per frame
