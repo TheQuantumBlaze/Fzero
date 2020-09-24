@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     // How fast we Accelerate and Deccelerate
     public float accelerationDecomposition = 0.5f;
     public float accelerationAmmount = 0.5f;
+    public float bleedPercentage = 0.1f;
     // Base rotationSpeed
     public float rotationSpeed = 2;
 
@@ -90,12 +91,14 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow) && IsAlive)
             {
                 body.MoveRotation(Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + (-rotationSpeed), transform.rotation.eulerAngles.z), movementSpeed * Time.deltaTime));
+                acceleration -= (acceleration * bleedPercentage) * Time.deltaTime;
             }
 
             //if the right key is pressed and we are still moving, apply rotation to the player
             else if (Input.GetKey(KeyCode.RightArrow) && IsAlive)
             {
                 body.MoveRotation(Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + (rotationSpeed), transform.rotation.eulerAngles.z), movementSpeed * Time.deltaTime));
+                acceleration -= (acceleration * bleedPercentage) * Time.deltaTime;
             }
 
             //  Move the player based on our acceleration and direction

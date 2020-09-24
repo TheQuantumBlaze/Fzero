@@ -222,6 +222,7 @@ MonoBehaviour:
   acceleration: 0
   accelerationDecomposition: 0.5
   accelerationAmmount: 0.5
+  bleedPercentage: 0.2
   rotationSpeed: 2
   lowGearAccelerationCurve:
     serializedVersion: 2
