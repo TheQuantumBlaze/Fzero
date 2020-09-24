@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     private float crashTimeOutTimer = 0f;
     public float crashTimer = 2f;
 
-    public AudioSource explosionSound;
+    PlayerSounds sounds;
 
     private void Awake()
     {
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         body = GetComponent<Rigidbody>();
-        explosionSound = GetComponent<AudioSource>();
+        sounds = GetComponent<PlayerSounds>();
     }
 
     public void Update()
@@ -56,6 +56,11 @@ public class PlayerController : MonoBehaviour
         {
             IsAlive = true;
             acceleration = 0;
+
+            if(sounds)
+            {
+                sounds.OnRespawn();
+            }
         }
 
         if(Input.GetKey(KeyCode.UpArrow))
@@ -113,7 +118,10 @@ public class PlayerController : MonoBehaviour
             IsAlive = false;
             crashTimeOutTimer = crashTimer;
 
-            explosionSound.Play();
+            if(sounds)
+            {
+                sounds.OnCrash();
+            }
         }
     }
 }
