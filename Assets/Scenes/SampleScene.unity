@@ -197,7 +197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 222998132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10.42, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1454121971}
@@ -1119,7 +1119,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1078209647}
   - component: {fileID: 1078209649}
-  - component: {fileID: 1078209648}
   m_Layer: 0
   m_Name: Pixelated Camera
   m_TagString: Untagged
@@ -1141,14 +1140,6 @@ Transform:
   m_Father: {fileID: 928125260}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 180}
---- !u!81 &1078209648
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078209646}
-  m_Enabled: 1
 --- !u!20 &1078209649
 Camera:
   m_ObjectHideFlags: 0
