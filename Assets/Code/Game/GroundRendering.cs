@@ -66,7 +66,7 @@ public class GroundRendering : MonoBehaviour
 
                 Color imageColor = trackImage.GetPixel(x, y);
 
-                if (imageColor == Color.black)
+                if (imageColor == Color.black || imageColor == Color.blue || imageColor == Color.red)
                 {
                     uvs.AddRange(new Vector2[]
                     {
@@ -75,8 +75,14 @@ public class GroundRendering : MonoBehaviour
                         new Vector2(1f,0f),
                         new Vector2(0.5f,0f)
                     });
+
+                    if(imageColor == Color.red)
+                        GameManager.singleton.spawnPoint = new Vector3(x * scale, 3, y * scale);
+
+                    if (imageColor == Color.blue)
+                        GameManager.singleton.barrelSpawn.Add(new Vector3(x * scale, 0, y * scale));
                 }
-                else if (imageColor == Color.white)
+                else if(imageColor == Color.white)
                 {
                     uvs.AddRange(new Vector2[]
                     {
@@ -86,17 +92,10 @@ public class GroundRendering : MonoBehaviour
                         new Vector2(0f,0f)
                     });
                 }
-                else if(imageColor == Color.red)
+                else
                 {
-                    GameManager.singleton.spawnPoint = new Vector3(x * scale, 0, y * scale);
-
-                    uvs.AddRange(new Vector2[]
-                    {
-                        new Vector2(0.5f,1f),
-                        new Vector2(1f,1f),
-                        new Vector2(1f,0f),
-                        new Vector2(0.5f,0f)
-                    });
+                    print("x: " + x + " y: " + y);
+                    print("Help we fucked up somewhere");
                 }
             }
         }
@@ -108,6 +107,9 @@ public class GroundRendering : MonoBehaviour
         }
 
         mesh.mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
+
+        print(verts.Count);
+        print(uvs.Count);
 
         mesh.mesh.vertices = verts.ToArray();
         mesh.mesh.triangles = tris.ToArray();
