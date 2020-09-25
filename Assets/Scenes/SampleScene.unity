@@ -1246,7 +1246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b383cd767462db34e9b67784a1416bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackImage: {fileID: 2800000, guid: db47e9f075520fd47a71044ca9e85723, type: 3}
+  trackImage: {fileID: 2800000, guid: ab2fd80a43025264dbedc3f91626e1e6, type: 3}
   mesh: {fileID: 0}
   render: {fileID: 0}
   collider: {fileID: 0}
