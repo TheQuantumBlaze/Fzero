@@ -5,29 +5,31 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager singleton;
-    public Vector3 spawnPoint = new Vector3();
-
     public GameObject barrelPrefab;
+    public Map currentMap;
 
-    public List<Vector3> barrelSpawn = new List<Vector3>();
-
+    
     private void Awake()
     {
         if (singleton == null)
             singleton = this;
     }
 
-    public void spawnPlayer()
+    public void spawnPlayer(Map map)
     {
+        this.currentMap = map;
         SpawnBarrels();
-        PlayerController.Singleton.gameObject.transform.position = spawnPoint;
+        PlayerController.Singleton.gameObject.transform.position = map.spawnPoint;
     }
 
     public void SpawnBarrels()
     {
-        foreach(Vector3 vec in barrelSpawn)
+        foreach (var s in currentMap.spawnables)
         {
-            GameObject go = Instantiate(barrelPrefab, vec, Quaternion.identity);
+            if (s.ID == ENTITYID.BARREL)
+            {
+                GameObject go = Instantiate(barrelPrefab, s.position, Quaternion.identity);
+            }
         }
     }
 }

@@ -12,6 +12,8 @@ public class GroundRendering : MonoBehaviour
     public MeshFilter mesh;
     public MeshRenderer render;
     public MeshCollider collider;
+    public Map map;
+
     public int scale = 1;
 
     private void Start()
@@ -19,6 +21,7 @@ public class GroundRendering : MonoBehaviour
         mesh = GetComponent<MeshFilter>();
         render = GetComponent<MeshRenderer>();
         collider = GetComponent<MeshCollider>();
+        map = new Map(trackImage, scale);
 
         CreateTrack();
     }
@@ -29,10 +32,11 @@ public class GroundRendering : MonoBehaviour
         List<int> tris = new List<int>();
         List<Vector2> uvs = new List<Vector2>();
 
-        int width, height, trisCounter = 0;
+        int width, height, scale, trisCounter = 0;
 
-        width = trackImage.width;
-        height = trackImage.height;
+        width = map.width;
+        height = map.height;
+        scale = map.scale;
 
         for (int x = 0; x < width; x++)
         {
@@ -64,9 +68,9 @@ public class GroundRendering : MonoBehaviour
 
                 trisCounter += 4;
 
-                Color imageColor = trackImage.GetPixel(x, y);
+                int mapID = map.blockMapping[x,y];
 
-                if (imageColor == Color.black || imageColor == Color.blue || imageColor == Color.red)
+                if (mapID == MAPINGS.TRACK)
                 {
                     uvs.AddRange(new Vector2[]
                     {
@@ -75,14 +79,8 @@ public class GroundRendering : MonoBehaviour
                         new Vector2(1f,0f),
                         new Vector2(0.5f,0f)
                     });
-
-                    if(imageColor == Color.red)
-                        GameManager.singleton.spawnPoint = new Vector3(x * scale, 3, y * scale);
-
-                    if (imageColor == Color.blue)
-                        GameManager.singleton.barrelSpawn.Add(new Vector3(x * scale, 0, y * scale));
                 }
-                else if(imageColor == Color.white)
+                else if(mapID == MAPINGS.NONTRACK)
                 {
                     uvs.AddRange(new Vector2[]
                     {
@@ -91,11 +89,6 @@ public class GroundRendering : MonoBehaviour
                         new Vector2(0.5f,0f),
                         new Vector2(0f,0f)
                     });
-                }
-                else
-                {
-                    print("x: " + x + " y: " + y);
-                    print("Help we fucked up somewhere");
                 }
             }
         }
@@ -125,6 +118,6 @@ public class GroundRendering : MonoBehaviour
 
         collider.sharedMesh = mesh.mesh;
 
-        GameManager.singleton.spawnPlayer();
+        GameManager.singleton.spawnPlayer(map);
     }
 }
