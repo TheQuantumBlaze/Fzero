@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     private float crashTimeOutTimer = 0f;
     public float crashTimer = 2f;
+    
 
     PlayerSounds sounds;
 
@@ -103,6 +104,16 @@ public class PlayerController : MonoBehaviour
             else if (Input.GetKey(KeyCode.RightArrow) && IsAlive)
             {
                 body.MoveRotation(Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + (rotationSpeed), transform.rotation.eulerAngles.z), movementSpeed * Time.deltaTime));
+                acceleration -= (acceleration * bleedPercentage) * Time.deltaTime;
+            }
+
+            int x, y;
+
+            x = Mathf.FloorToInt(this.transform.position.x / GameManager.singleton.currentMap.scale);
+            y = Mathf.FloorToInt(this.transform.position.z / GameManager.singleton.currentMap.scale);
+
+            if(GameManager.singleton.currentMap.blockMapping[x,y] == MAPINGS.NONTRACK)
+            {
                 acceleration -= (acceleration * bleedPercentage) * Time.deltaTime;
             }
 
