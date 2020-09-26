@@ -879,7 +879,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 4
+    width: 1
     height: 1
   near clip plane: 3
   far clip plane: 100
@@ -898,7 +898,7 @@ Camera:
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 0
+  m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!4 &519420032
@@ -1805,9 +1805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 492445f740b88d34eac7cd0483f31f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {x: 0, y: 0, z: 0}
   barrelPrefab: {fileID: 5599358154133026707, guid: 22a7100c8b1110b4888530ce26b4b3e5, type: 3}
-  barrelSpawn: []
 --- !u!4 &1469681489
 Transform:
   m_ObjectHideFlags: 0

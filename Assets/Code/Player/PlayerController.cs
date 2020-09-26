@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
     {
         body = GetComponent<Rigidbody>();
         sounds = GetComponent<PlayerSounds>();
+
+        body.MovePosition(this.transform.forward * 0.25f);
     }
 
     public void Update()
