@@ -40,6 +40,11 @@ public class Map
                     blockMapping[x, y] = MAPINGS.TRACK;
                     spawnables.Add(new SpawnableEntites(ENTITYID.BARREL, new Vector3(x * scale, 0, y * scale)));
                 }
+                else if(imageColor == Color.green)
+                {
+                    blockMapping[x, y] = MAPINGS.NONTRACK;
+                    spawnables.Add(new SpawnableEntites(ENTITYID.WALL, new Vector3(x * scale, 0, y * scale)));
+                }
                 else if(imageColor == Color.white)
                 {
                     blockMapping[x, y] = MAPINGS.NONTRACK;
@@ -58,6 +63,7 @@ public static class MAPINGS
 public static class ENTITYID
 {
     public static int BARREL = 0;
+    public static int WALL = 1;
 }
 
 public class SpawnableEntites

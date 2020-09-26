@@ -128,8 +128,23 @@ public class PlayerController : MonoBehaviour
         {
             IsAlive = false;
             crashTimeOutTimer = crashTimer;
+            gameObject.transform.GetChild(0).gameObject.AddComponent<Flashing>();
 
             if(sounds)
+            {
+                sounds.OnCrash();
+            }
+        }
+        else if(collider.tag == "CrashableWall")
+        {
+            IsAlive = false;
+            crashTimeOutTimer = crashTimer;
+            gameObject.transform.GetChild(0).gameObject.AddComponent<Flashing>();
+
+            body.MoveRotation(Quaternion.Euler(this.transform.rotation.eulerAngles.x, this.transform.rotation.eulerAngles.y - 180, this.transform.rotation.eulerAngles.z));
+            body.MovePosition(this.transform.forward * 0.25f);
+
+            if (sounds)
             {
                 sounds.OnCrash();
             }
